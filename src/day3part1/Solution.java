@@ -1,5 +1,8 @@
+package day3part1;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -7,7 +10,8 @@ import java.util.Set;
 
 class Solution {
     public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("C:\\Users\\1776799\\IdeaProjects\\Solution\\src\\input.txt");
+        URL url = Solution.class.getResource("input.txt");
+        File file = new File(url.getPath());
         Scanner scanner  = new Scanner(file);
         int ans = 0;
         Set<Character> s1 = new HashSet<>();
