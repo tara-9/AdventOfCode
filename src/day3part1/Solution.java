@@ -15,31 +15,20 @@ class Solution {
         Scanner scanner  = new Scanner(file);
         int ans = 0;
         Set<Character> s1 = new HashSet<>();
-        Set<Character> s2 = new HashSet<>();
-        int lineNo = 0;
         while (scanner.hasNextLine()) {
             String val = scanner.nextLine();
-            lineNo++;
             int len  = val.length();
-            if(lineNo % 3 == 0 ) {
-                for(char ch:val.toCharArray()) {
-                    if(s1.contains(ch) && s2.contains(ch)) {
-                        System.out.println(ch);
-                        if(Character.isLowerCase(ch)) {
-                            ans+= ch - 'a' +1;
-                        }
-                        else ans += ch- 'A' + 27;
-                        s1.clear();
-                        s2.clear();
-                        break;
+            for(char ch:val.substring(0,len/2).toCharArray()) s1.add(ch);
+            for(char ch: val.substring(len/2, len).toCharArray()) {
+                if(s1.contains(ch)) {
+                    System.out.println(ch);
+                    if(Character.isLowerCase(ch)) {
+                        ans+= ch - 'a' +1;
                     }
+                    else ans += ch- 'A' + 27;
+                    s1.clear();
+                    break;
                 }
-            }
-            else if(lineNo % 3 == 1){
-                for(char ch: val.toCharArray()) s1.add(ch);
-            }
-            else if(lineNo % 3 == 2){
-                for(char ch: val.toCharArray()) s2.add(ch);
             }
 
         }
