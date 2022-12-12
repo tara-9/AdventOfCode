@@ -1,12 +1,10 @@
-package day7pt1;
+package day7pt2;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
 class Main{
@@ -27,7 +25,7 @@ class Main{
  *         z
  */
 class Solution {
-    long ans = 0;
+    int ans = 0;
     public  void main() throws FileNotFoundException {
         URL url = Solution.class.getResource("input.txt");
         File file = new File(url.getPath());
@@ -65,8 +63,12 @@ class Solution {
                 }
             }
         }
+        Node root = nodes.get(0);
+        int required = 30000000- (70000000 - root.size);
+        System.out.println(required);
+        ans = 30000000;
         for(Node n:nodes) {
-            if(n.size <= 100000) ans+=n.size;
+            if(n.size >= required) ans = Math.min(ans, n.size);
         }
 
     }
